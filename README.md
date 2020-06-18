@@ -1,5 +1,7 @@
 # da1ight_infra
-da1ight Infra repository
+
+bastion_IP = 130.193.51.168
+someinternalhost_IP = 10.130.0.33
 
 
 Jumpbox cheatsheet:
@@ -17,3 +19,5 @@ Host someinternalhost
     User appuser
     ProxyCommand ssh -q -W %h:%p bastion
 ```
+
+Then just run `ssh someinternalhost` and you good to go
