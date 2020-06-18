@@ -1,9 +1,11 @@
 # da1ight_infra
+da1ight Infra repository
+
 
 Jumpbox cheatsheet:
 Just a quick tip that helps ssh to internal infrastructure using bastion host in one step
 
-`edit ~/.ssh/config`
+edit ~/.ssh/config
 
 ```
 Host bastion
@@ -15,5 +17,3 @@ Host someinternalhost
     User appuser
     ProxyCommand ssh -q -W %h:%p bastion
 ```
-
-Then just run `ssh someinternalhost` and you good to go
