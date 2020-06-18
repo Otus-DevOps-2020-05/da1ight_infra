@@ -1,7 +1,7 @@
 # da1ight_infra
 
-bastion_IP = 130.193.51.168
-someinternalhost_IP = 10.130.0.33
+* bastion_IP = 130.193.51.168
+* someinternalhost_IP = 10.130.0.33
 
 
 Jumpbox cheatsheet:
