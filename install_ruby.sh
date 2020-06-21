@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Update packets database
-apt update &> ./log
+apt update
 
 # Install ruby, bundler and build essential packets
-apt install -y ruby-full ruby-bundler build-essential &>> ./log
+apt install -y ruby-full ruby-bundler build-essential
 
 # Check exit code
 if test $? -ne 0
