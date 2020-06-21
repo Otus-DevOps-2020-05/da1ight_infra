@@ -1,5 +1,7 @@
 # da1ight_infra
 
+Homework #3
+
 ```
 bastion_IP = 130.193.51.168
 someinternalhost_IP = 10.130.0.33
@@ -22,3 +24,15 @@ Host someinternalhost
 ```
 
 Then just run `ssh someinternalhost` and you good to go
+
+Homework #4
+
+```
+testapp_IP = 84.201.131.164
+testapp_port = 3030
+```
+
+Create VM with metadata file
+```
+yc compute instance create   --name reddit-app-meta   --hostname reddit-app-meta   --memory=4   --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4   --metadata serial-port-enable=1 --metadata-from-file user-data=./meta.yaml
+```
