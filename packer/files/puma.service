@@ -1,0 +1,17 @@
+[Unit]
+Description=Puma Rails Server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/puma \
+          --dir /opt/app/ \
+          -p 3030 \
+          --pidfile /opt/app/puma.pid
+
+ExecStop=kill -9 `cat /opt/app/puma.pid`
+TimeoutSec=30
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
