@@ -1,0 +1,59 @@
+{
+    "variables": {
+        "yc_catalog_id": "null",
+        "yc_folder_id": "null",
+        "yc_source_image_id": "null",
+        "yc_key_path": "null"
+    },
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "{{user `yc_key_path`}}",
+            "folder_id": "{{user `yc_folder_id`}}",
+            "source_image_id": "{{user `yc_source_image_id`}}",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-full",
+            "ssh_username": "ubuntu",
+            "use_ipv4_nat": "true",
+            "platform_id": "standard-v1"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": "sleep 30"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/deploy.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "file",
+            "source": "files/puma.service",
+            "destination": "/home/ubuntu/"
+        },
+        {
+            "type": "shell",
+            "inline": "sudo cp /home/ubuntu/puma.service /etc/systemd/system/"
+        },
+        {
+            "type": "shell",
+            "inline": "sudo systemctl enable puma.service"
+        },
+        {
+            "type": "shell",
+            "inline": "sudo systemctl start puma.service"
+        }
+    ]
+}
