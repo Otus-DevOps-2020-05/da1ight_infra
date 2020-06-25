@@ -36,3 +36,17 @@ Create VM with metadata file
 ```
 yc compute instance create   --name reddit-app-meta   --hostname reddit-app-meta   --memory=4   --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4   --metadata serial-port-enable=1 --metadata-from-file user-data=./meta.yaml
 ```
+
+Homework #5
+* Созданы файлы шаблонов fry/bake (ubuntu16.json/immutable.json) для packer.
+* Добавлена возможность параметризации по средствам отдельного файла variables.json.
+* Шаблоны проверены packer validate.
+* Изучены возможности builders и provisioners.
+* Создамы VM на основе шаблонов, как из web консоли так и по средствам cli.
+* Добавлен скрипт для автоматического создания VM из образа по средствам yc cli create-reddit-vm.sh.
+
+При запуске скрипта необходимо предоставить путь до вашего публичного ssh ключа:
+
+```
+./create-reddit-vm.sh /path/to/your/key/1.pub
+```
