@@ -6,4 +6,6 @@ packer/variables.json
 *.tfstate.*.backup
 *.tfstate.backup
 *.tfvars
+*.tfstate.bckp
+*.tfvars.bckp
 .terraform/

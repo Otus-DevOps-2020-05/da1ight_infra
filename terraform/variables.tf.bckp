@@ -41,3 +41,9 @@ variable instance_count {
   # Значение по умолчанию
   default = "1"
 }
+variable app_disk_image {
+  description = "Disk image for reddit app"
+}
+variable db_disk_image {
+  description = "Disk image for reddit db"
+}
