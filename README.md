@@ -71,3 +71,27 @@ Homework #7
 export AWS_ACCESS_KEY_ID="anaccesskey"
 export AWS_SECRET_ACCESS_KEY="asecretkey"
 ```
+
+Homework #8
+
+* Установлен Ansible
+* Познакомился с базовыми функциями и инвентори
+* Выполнениk различныt модули на подготовленной в прошлых ДЗ инфраструктуре (command, shell, git)
+* Написал playbook clone.yml
+
+Задания со '*'
+
+* Создан _dynamic_inventory.sh. Скрипт налету генерирует inventory (Мне решение показалось не слишком надежным, есть нюансы. Поэтому решил использовать более простое со статическим inventory.json))
+* Вручную создан inventory.json (https://serverfault.com/questions/927125/dynamic-inventory-in-yaml-format)
+* Скрипт dynamic_inventory.sh просто выдает в stdout содержимое файла inventory.json
+
+```
+$ ansible-inventory --inventory ./dynamic_inventory.sh --graph
+@all:
+  |--@app:
+  |  |--84.201.128.150
+  |--@db:
+  |  |--130.193.39.101
+  |--@ungrouped:
+
+```
