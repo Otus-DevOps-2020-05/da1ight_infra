@@ -2,6 +2,8 @@
 
 packer/variables.json
 
+*.retry
+
 *.tfstate
 *.tfstate.*.backup
 *.tfstate.backup
