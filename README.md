@@ -95,3 +95,36 @@ $ ansible-inventory --inventory ./dynamic_inventory.sh --graph
   |--@ungrouped:
 
 ```
+
+Homework #9
+
+* Созданы плейбуки, хендлеры и шаблоны для конфигурации окружения и деплоя тестового приложения. Подход один плейбук, один сценарий (play)
+* Аналогично один плейбук, но много сценариев
+* Несколько плейбуков, каждый под свою задачу
+* Изменим провижн образов Packer на Ansible-плейбуки
+
+Задание со '*'
+
+* Скачен плагин для формирования динамического inventory yc_compute.py (https://raw.githubusercontent.com/st8f/ansible/yc/lib/ansible/plugins/inventory/yc_compute.py)
+* Установлены зависимости через pip
+* Создан файл с настройками yc_compute.yml
+* Используя параметр keyed_groups, хосты были разложены по группам согласно правилу
+```
+key: labels['tags']
+```
+
+```
+$ ansible-inventory --list --yaml
+all:
+  children:
+    _reddit_app:
+      hosts:
+        130.193.39.129:
+          ansible_host: 130.193.39.129
+    _reddit_db:
+      hosts:
+        130.193.37.22:
+          ansible_host: 130.193.37.22
+    ungrouped: {}
+
+```
