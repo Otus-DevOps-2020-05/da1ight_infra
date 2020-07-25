@@ -11,3 +11,7 @@ packer/variables.json
 *.tfstate.bckp
 *.tfvars.bckp
 .terraform/
+
+vault.key
+
+jdauphant.nginx
