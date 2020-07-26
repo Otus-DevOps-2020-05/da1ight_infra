@@ -1,5 +1,7 @@
 # da1ight_infra
 
+[![Build Status](https://travis-ci.com/Otus-DevOps-2020-05/da1ight_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-05/da1ight_infra)
+
 Homework #3
 
 ```
@@ -128,3 +130,19 @@ all:
     ungrouped: {}
 
 ```
+
+Homework #10
+
+* Переносены созданные плейбуки в раздельные роли
+* Описаны два окружения
+* Использовали коммьюнити роль nginx
+* Использовали Ansible Vault для наших окружений
+
+Задание со '*'
+
+* Настроено использование динамического инвентори для окружений stage и prod.
+* Для коммитов в master и PR выполнялись как минимум эти действия:
+   - packer validate для всех шаблонов
+   - terraform validate и tflint для окружений stage и prod
+   - ansible-lint для плейбуков Ansible
+   - в README.md добавлен бейдж с статусом билда
