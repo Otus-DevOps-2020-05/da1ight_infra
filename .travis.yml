@@ -4,6 +4,23 @@ language: bash
 before_install:
 - curl https://raw.githubusercontent.com/express42/otus-homeworks/2020-05/run.sh |
   bash
+- curl -L -o packer.zip "https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip" && unzip
+  -d ~/bin packer.zip && packer version
+- curl -L -o terraform.zip "https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip" && unzip -d ~/bin terraform.zip && terraform --version
+- pip install --user ansible-lint && ansible-lint --version
+- curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && tflint --version
+script:
+  - packer validate -var-file=./packer/variables.json.example ./packer/db.json
+  - packer validate -var-file=./packer/variables.json.example ./packer/app.json
+  - cd terraform/prod && terraform get && cd ../..
+  - cd terraform/prod && terraform init -backend=false && cd ../..
+  - cd terraform/prod && terraform validate && cd ../..
+  - cd terraform/stage && terraform get && cd ../..
+  - cd terraform/stage && terraform init -backend=false && cd ../..
+  - cd terraform/stage && terraform validate && cd ../..
+  - tflint terraform/prod
+  - tflint terraform/stage
+  - ansible-lint -v ansible/playbooks/site.yml
 notifications:
   slack:
     rooms:
