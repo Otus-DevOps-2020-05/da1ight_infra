@@ -2,7 +2,6 @@
 - name: Configure App
   hosts: appserver
   become: true
-
   roles:
     - app
     - jdauphant.nginx
