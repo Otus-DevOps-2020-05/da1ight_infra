@@ -6,7 +6,5 @@
 
   tasks:
     - name: Install python for Ansible
-      raw: "{{ item }}"
-      loop:
-        - sudo apt install -y python-minimal
+      raw: bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qqy python-minimal)"
       changed_when: False
